@@ -2,7 +2,7 @@ class DatabasePurgeJob < ApplicationJob
   queue_as :default
 
   def perform
-    cutoff_date = 1.week.ago
+    cutoff_date = 1.minute.ago
   
     Rails.logger.info "Starting weekly database purge for data older than #{cutoff_date}"
 
