@@ -83,4 +83,3 @@ production:
   <<: *default
   database: anywhere_clubs_stripe_production
   username: anywhere_clubs_stripe
-  password: <%= ENV["ANYWHERE_CLUBS_STRIPE_DATABASE_PASSWORD"] %>
