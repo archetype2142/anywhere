@@ -46,7 +46,7 @@
         <div class="mr-4 mb-2">
           <span class="text-sm font-medium text-gray-700">Last Purge:</span>
           <% if @last_database_purge %>
-            <span class="ml-2 text-sm text-gray-600"><%= @last_database_purge.strftime("%Y-%m-%d %H:%M") %></span>
+            <span class="ml-2 text-sm text-gray-600"><%= @last_database_purge&.to_time&.strftime("%Y-%m-%d %H:%M") %></span>
           <% else %>
             <span class="ml-2 text-sm text-gray-600">Never</span>
           <% end %>
