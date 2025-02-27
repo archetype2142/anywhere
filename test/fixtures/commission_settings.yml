@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  merchant: one
+  minimum_order_value: 9.99
+  maximum_order_value: 9.99
+  commission_value: 9.99
+  commission_type: 1
+  is_default: false
+  delivery_type: 1
+
+two:
+  merchant: two
+  minimum_order_value: 9.99
+  maximum_order_value: 9.99
+  commission_value: 9.99
+  commission_type: 1
+  is_default: false
+  delivery_type: 1

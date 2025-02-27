@@ -1,0 +1,85 @@
+<!-- Database Maintenance Section -->
+<div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Database Maintenance</h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">Manage database cleanup operations.</p>
+    </div>
+    <%= button_to trigger_database_purge_path, method: :post, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { confirm: "This will purge old data from the database. Are you sure?" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      </svg>
+      Trigger Database Purge
+    <% end %>
+  </div>
+  <div class="border-t border-gray-200 p-6">
+    <% if @last_database_purge_error.present? %>
+      <div class="mb-4 p-4 bg-red-50 rounded-md border border-red-100">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3 flex-1">
+            <h3 class="text-sm font-medium text-red-800">Last purge failed at <%= @last_database_purge_error[:time].strftime("%Y-%m-%d %H:%M") %></h3>
+            <div class="mt-2 text-sm text-red-700">
+              <p><%= @last_database_purge_error[:message] %></p>
+              <% if @last_database_purge_error[:backtrace].present? %>
+                <div class="mt-2 text-xs font-mono overflow-x-auto">
+                  <% @last_database_purge_error[:backtrace].each do |line| %>
+                    <div><%= line %></div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="bg-gray-50 p-4 rounded-lg">
+      <h3 class="text-md font-medium text-gray-700 mb-2">Database Purge Schedule</h3>
+      <p class="text-sm text-gray-600 mb-2">The database is automatically purged every Sunday at midnight to remove old data and maintain performance.</p>
+      
+      <div class="flex flex-wrap items-center mt-3">
+        <div class="mr-4 mb-2">
+          <span class="text-sm font-medium text-gray-700">Last Purge:</span>
+          <% if @last_database_purge %>
+            <span class="ml-2 text-sm text-gray-600"><%= @last_database_purge.strftime("%Y-%m-%d %H:%M") %></span>
+          <% else %>
+            <span class="ml-2 text-sm text-gray-600">Never</span>
+          <% end %>
+        </div>
+        
+        <div class="mb-2">
+          <span class="text-sm font-medium text-gray-700">Next Scheduled Purge:</span>
+          <span class="ml-2 text-sm text-gray-600">
+            <%= (Date.today.beginning_of_week(:sunday) + 7.days).strftime("%Y-%m-%d") %> at 00:00
+          </span>
+        </div>
+      </div>
+      
+      <div class="mt-4 p-3 bg-blue-50 rounded-md border border-blue-100">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3 flex-1">
+            <p class="text-sm text-blue-700">
+              The database purge removes:
+            </p>
+            <ul class="list-disc list-inside mt-1 ml-2 text-sm text-blue-700">
+              <li>Orders older than 1 week</li>
+              <li>Merchants with no orders</li>
+              <li>Pending charges older than 1 week</li>
+              <li>Orphaned related orders</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

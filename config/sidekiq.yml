@@ -1,0 +1,19 @@
+:concurrency: 5
+:queues:
+  - default
+  - mailers
+  - low
+
+:scheduler:
+  :schedule:
+    process_pending_charges:
+      cron: '*/5 * * * *'  # Run every 5 minutes
+      class: ProcessPendingChargesJob
+      queue: default
+      description: "Process pending Stripe charges that haven't been matched to orders yet"
+    
+    database_purge:
+      cron: '0 0 * * 0'    # Run at midnight every Sunday
+      class: DatabasePurgeJob
+      queue: low
+      description: "Weekly database purge to remove old data and maintain performance"

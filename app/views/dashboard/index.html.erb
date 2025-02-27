@@ -1,0 +1,605 @@
+<div class="space-y-8">
+  <!-- Stats Overview -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Orders</dt>
+              <dd class="flex items-baseline">
+                <div class="text-2xl font-semibold text-gray-900"><%= @total_orders %></div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Amount</dt>
+              <dd class="flex items-baseline">
+                <div class="text-2xl font-semibold text-gray-900">$<%= number_with_precision(@total_amount, precision: 2) %></div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Commission</dt>
+              <dd class="flex items-baseline">
+                <div class="text-2xl font-semibold text-gray-900">$<%= number_with_precision(@total_commission, precision: 2) %></div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
+            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Payout</dt>
+              <dd class="flex items-baseline">
+                <div class="text-2xl font-semibold text-gray-900">$<%= number_with_precision(@total_payout, precision: 2) %></div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
+            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-gray-500 truncate">Gym Bookings</dt>
+              <dd class="flex items-baseline">
+                <div class="text-2xl font-semibold text-gray-900"><%= @total_gym_bookings %></div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Orders -->
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Orders</h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">Latest orders processed by the system.</p>
+      </div>
+      <div>
+        <%= button_to "Retry All Failed", retry_all_failed_orders_path, method: :post, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    </div>
+    <div class="border-t border-gray-200">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Merchant</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commission</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payout</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% @orders.each do |order| %>
+              <% # Skip child orders - they'll be shown under their parents %>
+              <% next if order.parent_orders.any? && !params[:show_all] %>
+              
+              <% # Determine row class based on order type %>
+              <% row_class = order.order_type == 'gym_booking' ? 'bg-purple-50' : '' %>
+              
+              <tr id="order-<%= order.id %>" class="<%= row_class %> order-row">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-start">
+                    <% if order.child_orders.any? %>
+                      <button class="mr-2 text-gray-500 hover:text-gray-700 toggle-children" data-order-id="<%= order.id %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </button>
+                    <% else %>
+                      <div class="w-5 mr-2"></div>
+                    <% end %>
+                    
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">
+                        <% if order.job_id.present? %>
+                          <a href="https://admin.anywhereclubs.store/en/dashboard/orders/details/<%= order.job_id %>" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                            <%= order.job_id %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        <% else %>
+                          <%= order.job_id %>
+                        <% end %>
+                      </div>
+                      
+                      <div class="flex items-center mt-1">
+                        <% if order.order_type == 'gym_booking' %>
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            Gym Booking
+                          </span>
+                        <% elsif order.merchant&.business_type == 'trainer' %>
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            Trainer
+                          </span>
+                        <% elsif order.merchant&.business_type == 'gym' %>
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            Gym
+                          </span>
+                        <% else %>
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                            Regular
+                          </span>
+                        <% end %>
+                      </div>
+                      
+                      <% if order.parent_order_job_id.present? %>
+                        <div class="text-xs text-gray-500 mt-1">
+                          Parent: <%= order.parent_order_job_id %>
+                        </div>
+                      <% end %>
+                      
+                      <% if order.child_orders.any? %>
+                        <div class="text-xs text-gray-500 mt-1 flex items-center flex-wrap">
+                          <span class="mr-1">Includes:</span>
+                          <% order.child_orders.each_with_index do |child, index| %>
+                            <% badge_color = child.order_type == 'gym_booking' ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' %>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium <%= badge_color %> mr-1 mb-1">
+                              <%= child.merchant&.name&.truncate(15) || 'Gym' %>
+                              <span class="ml-1 text-xs">$<%= number_with_precision(child.amount, precision: 2) %></span>
+                            </span>
+                            <% if index < order.child_orders.size - 1 %>
+                              <span class="mx-0.5 text-gray-400">+</span>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <div><%= order.merchant&.name || 'Unknown' %></div>
+                  <% if order.merchant&.business_type.present? && order.merchant&.business_type != 'unknown' %>
+                    <div class="text-xs text-gray-500 mt-1">
+                      <%= order.merchant&.business_type&.humanize %>
+                    </div>
+                  <% end %>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <%= link_to "$ #{number_with_precision(order.amount, precision: 2)}",  "https://dashboard.stripe.com/test/payments/#{order.transaction_id}", class: "text-indigo-600 hover:text-indigo-900"%>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<%= number_with_precision(order.commission_amount, precision: 2) %></td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <% if order.stripe_transfer_id.present? %>
+                    <%= link_to "$ #{number_with_precision(order.payout_amount, precision: 2)}",  "https://dashboard.stripe.com/test/payments/#{order.stripe_transfer_id}", class: "text-indigo-600 hover:text-indigo-900"%>
+                  <% else %>
+                    $<%= number_with_precision(order.payout_amount, precision: 2) %>
+                  <% end %>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <% status_color = case order.status
+                                    when 'pending'
+                                      'bg-yellow-100 text-yellow-800'
+                                    when 'processing'
+                                      'bg-blue-100 text-blue-800'
+                                    when 'paid'
+                                      'bg-green-100 text-green-800'
+                                    when 'failed'
+                                      'bg-red-100 text-red-800'
+                                    when 'canceled'
+                                      'bg-gray-100 text-gray-800'
+                                    else
+                                      'bg-gray-100 text-gray-800'
+                                    end %>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= status_color %>">
+                    <%= order.status&.humanize %>
+                  </span>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <% if order.status == 'failed' %>
+                    <%= button_to "Retry", retry_failed_order_path(order), method: :post, class: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+                  <% end %>
+                </td>
+              </tr>
+              
+              <% # Child orders (hidden by default) %>
+              <% if order.child_orders.any? %>
+                <% order.child_orders.each do |child| %>
+                  <tr id="child-<%= order.id %>-<%= child.id %>" class="child-row hidden bg-indigo-50 border-t border-b border-indigo-100">
+                    <td class="px-6 py-3 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <div class="ml-5 flex items-center">
+                          <div class="flex items-center">
+                            <div class="border-l-2 border-indigo-400 h-6 mr-3"></div>
+                            <div class="border-b-2 border-indigo-400 w-3 mr-3"></div>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mr-2">
+                              Related
+                            </span>
+                            <div>
+                              <div class="text-sm font-medium text-gray-900">
+                                <% if child.job_id.present? %>
+                                  <a href="https://admin.anywhereclubs.store/en/dashboard/orders/details/<%= child.job_id %>" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                                    <%= child.job_id %>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                  </a>
+                                <% else %>
+                                  <%= child.job_id %>
+                                <% end %>
+                              </div>
+                              
+                              <div class="flex items-center mt-1">
+                                <% if child.order_type == 'gym_booking' %>
+                                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Gym Booking
+                                  </span>
+                                <% elsif child.merchant&.business_type == 'trainer' %>
+                                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Trainer
+                                  </span>
+                                <% elsif child.merchant&.business_type == 'gym' %>
+                                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Gym
+                                  </span>
+                                <% else %>
+                                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    Regular
+                                  </span>
+                                <% end %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                      <div><%= child.merchant&.name || 'Unknown' %></div>
+                      <% if child.merchant&.business_type.present? && child.merchant&.business_type != 'unknown' %>
+                        <div class="text-xs text-gray-500 mt-1">
+                          <%= child.merchant&.business_type&.humanize %>
+                        </div>
+                      <% end %>
+                    </td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                      <%= link_to "$ #{number_with_precision(child.amount, precision: 2)}",  "https://dashboard.stripe.com/test/payments/#{child.transaction_id}", class: "text-indigo-600 hover:text-indigo-900"%>
+                    </td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">$<%= number_with_precision(child.commission_amount, precision: 2) %></td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                      <% if child.stripe_transfer_id.present? %>
+                        <%= link_to "$ #{number_with_precision(child.payout_amount, precision: 2)}",  "https://dashboard.stripe.com/test/payments/#{child.stripe_transfer_id}", class: "text-indigo-600 hover:text-indigo-900"%>
+                      <% else %>
+                        $<%= number_with_precision(child.payout_amount, precision: 2) %>
+                      <% end %>
+                    </td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap">
+                      <% status_color = case child.status
+                                        when 'pending'
+                                          'bg-yellow-100 text-yellow-800'
+                                        when 'processing'
+                                          'bg-blue-100 text-blue-800'
+                                        when 'paid'
+                                          'bg-green-100 text-green-800'
+                                        when 'failed'
+                                          'bg-red-100 text-red-800'
+                                        when 'canceled'
+                                          'bg-gray-100 text-gray-800'
+                                        else
+                                          'bg-gray-100 text-gray-800'
+                                        end %>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <%= status_color %>">
+                        <%= child.status&.humanize %>
+                      </span>
+                    </td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500"><%= child.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                    
+                    <td class="px-6 py-3 whitespace-nowrap text-sm font-medium">
+                      <% if child.status == 'failed' %>
+                        <%= button_to "Retry", retry_failed_order_path(child), method: :post, class: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+            
+            <% if @orders.empty? %>
+              <tr>
+                <td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No orders found</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for toggling child rows -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.toggle-children');
+      
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const orderId = this.getAttribute('data-order-id');
+          const childRows = document.querySelectorAll(`[id^="child-${orderId}-"]`);
+          const icon = this.querySelector('svg');
+          const parentRow = document.getElementById(`order-${orderId}`);
+          
+          childRows.forEach(row => {
+            row.classList.toggle('hidden');
+          });
+          
+          // Rotate the arrow icon
+          icon.classList.toggle('rotate-180');
+          
+          // Highlight the parent row when expanded
+          if (!childRows[0].classList.contains('hidden')) {
+            parentRow.classList.add('bg-indigo-50', 'border-b-2', 'border-indigo-100');
+          } else {
+            parentRow.classList.remove('bg-indigo-50', 'border-b-2', 'border-indigo-100');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Merchants and Pending Charges -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Recent Merchants -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Merchants</h3>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">Latest merchants added to the system.</p>
+        </div>
+        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+          Total: <%= @total_merchants %>
+        </span>
+      </div>
+      <div class="border-t border-gray-200">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Marketplace ID</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stripe Account</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% @merchants.each do |merchant| %>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <a href="https://admin.anywhereclubs.store/en/dashboard/merchants/merchant-details/<%= merchant.marketplace_user_id %>" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                      <%= merchant.name %>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= merchant.marketplace_user_id %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <% if merchant.stripe_account_id.present? %>
+                      <div class="flex items-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2">
+                          Connected
+                        </span>
+                        <a href="https://dashboard.stripe.com/connect/accounts/<%= merchant.stripe_account_id %>" target="_blank" class="text-gray-600 hover:text-gray-900">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                          </svg>
+                        </a>
+                      </div>
+                    <% else %>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                        Not Connected
+                      </span>
+                    <% end %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= merchant.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <%= button_to "Refresh", refresh_merchant_stripe_account_path(merchant), method: :post, class: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" %>
+                  </td>
+                </tr>
+              <% end %>
+              <% if @merchants.empty? %>
+                <tr>
+                  <td colspan="5" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No merchants found</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+          <div class="flex-1 flex justify-between sm:hidden">
+            <%= link_to_prev_page @merchants, 'Previous', class: 'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50' %>
+            <%= link_to_next_page @merchants, 'Next', class: 'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50' %>
+          </div>
+          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm text-gray-700">
+                Showing <span class="font-medium"><%= @merchants.offset_value + 1 %></span> to <span class="font-medium"><%= @merchants.offset_value + @merchants.length %></span> of <span class="font-medium"><%= @merchants.total_count %></span> merchants
+              </p>
+            </div>
+            <div>
+              <%= paginate @merchants, window: 2 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Charges -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Pending Charges</h3>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">Charges waiting to be processed.</p>
+        </div>
+        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+          Total: <%= @total_pending_charges %>
+        </span>
+      </div>
+      <div class="border-t border-gray-200">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Charge ID</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Currency</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job ID</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% @pending_charges.each do |charge| %>
+                <% metadata = JSON.parse(charge.metadata) rescue {} %>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= charge.charge_id %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<%= number_with_precision(charge.amount, precision: 2) %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= charge.currency.upcase %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= metadata['job_id'] %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= charge.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <%= button_to "Process", process_pending_charge_path(charge), method: :post, class: "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" %>
+                  </td>
+                </tr>
+              <% end %>
+              <% if @pending_charges.empty? %>
+                <tr>
+                  <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No pending charges found</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+          <div class="flex-1 flex justify-between sm:hidden">
+            <%= link_to_prev_page @pending_charges, 'Previous', class: 'relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50' %>
+            <%= link_to_next_page @pending_charges, 'Next', class: 'ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50' %>
+          </div>
+          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm text-gray-700">
+                Showing <span class="font-medium"><%= @pending_charges.offset_value + 1 %></span> to <span class="font-medium"><%= @pending_charges.offset_value + @pending_charges.length %></span> of <span class="font-medium"><%= @pending_charges.total_count %></span> pending charges
+              </p>
+            </div>
+            <div>
+              <%= paginate @pending_charges, window: 2 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Status Distribution -->
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Order Status Distribution</h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">Overview of orders by status.</p>
+    </div>
+    <div class="border-t border-gray-200 p-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <% @orders_by_status.each do |status, count| %>
+          <% status_color = case status
+                           when 'pending' then 'bg-yellow-100 text-yellow-800'
+                           when 'paid' then 'bg-green-100 text-green-800'
+                           when 'failed' then 'bg-red-100 text-red-800'
+                           else 'bg-gray-100 text-gray-800'
+                           end %>
+          <div class="bg-white overflow-hidden shadow rounded-lg border">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center">
+                <div class="w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate"><%= status.humanize %> Orders</dt>
+                    <dd class="mt-1 text-3xl font-semibold text-gray-900"><%= count %></dd>
+                  </dl>
+                </div>
+                <div>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium <%= status_color %>">
+                    <%= ((count.to_f / @total_orders) * 100).round %>%
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render 'database_maintenance' %>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: one
+  attempt_number: 1
+  status: MyString
+  error_message: MyText
+
+two:
+  order: two
+  attempt_number: 1
+  status: MyString
+  error_message: MyText
